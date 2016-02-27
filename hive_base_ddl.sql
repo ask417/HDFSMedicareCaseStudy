@@ -1,13 +1,13 @@
-DROP TABLE Hospital;
-CREATE EXTERNAL TABLE Hospital(
-	ProviderID	int,
+DROP TABLE hospital;
+CREATE EXTERNAL TABLE hospital(
+	ProviderID      string,
 	HospitalName string,
 	Address string,
 	City string,
 	State string,
-	ZIPCode int,
+	ZIPCode string,
 	CountyName string,
-	PhoneNumber int,
+	PhoneNumber string,
 	HospitalType string,
 	HospitalOwnership string,
 	EmergencyServices string
@@ -19,41 +19,47 @@ with SERDEPROPERTIES (
  "escapeChar" = '\\'
 )
 STORED AS TEXTFILE
-LOCATION "/user/w205/hospital_compare";
+LOCATION "/user/w205/hospital_compare/hospital";
 
 
 
 
 
-DROP TABLE SurveyResult;
-CREATE EXTERNAL TABLE SurveyResult(
-ProviderID int,
-CommNursesAchPts int,
-CommNursesImpPts int,
-CommNursesDimScore int,
-CommDoctorsAchPts int,
-CommDoctorsImpPts int,
-CommDoctorsDimScore int,
-RespHospitalStaffAchPts int,
-RespHospitalStaffImpPts int,
-RespHospitalStaffDimScore int,
-PainMgmtAchPts int,
-PainMgmtImpPts int,
-PainMgmtDimScore int,
-CommaboutMedicinesAchPts int,
-CommaboutMedicinesImpPts int,
-CommaboutMedicinesDimScore int,
-CleanlinessQuietnessHospitalEnvAchPts int,
-CleanlinessQuietnessHospitalEnvImpPts int,
-CleanlinessQuietnessHospitalEnvDimScore int,
-DischargeInfoAchPts int,
-DischargeInfoImpPts int,
-DischargeInfoDimScore int,
-OverallRatingHospitalAchPts int,
-OverallRatingHospitalImpPts int,
-OverallRatingHospitalDimScore int,
-HCAHPSBaseScore int,
-HCAHPSConsistencyScore int
+DROP TABLE surveyresult;
+CREATE EXTERNAL TABLE surveyresult(
+	ProviderID string,
+	HospitalName string,
+	Address string,
+	City string,
+	State string,
+	ZIPCode string,
+	CountyName string,
+	CommNursesAchPts string,
+	CommNursesImpPts string,
+	CommNursesDimScore string,
+	CommDoctorsAchPts string,
+	CommDoctorsImpPts string,
+	CommDoctorsDimScore string,
+	RespHospitalStaffAchPts string,
+	RespHospitalStaffImpPts string,
+	RespHospitalStaffDimScore string,
+	PainMgmtAchPts string,
+	PainMgmtImpPts string,
+	PainMgmtDimScore string,
+	CommaboutMedicinesAchPts string,
+	CommaboutMedicinesImpPts string,
+	CommaboutMedicinesDimScore string,
+	CleanlinessQuietnessHospitalEnvAchPts string,
+	CleanlinessQuietnessHospitalEnvImpPts string,
+	CleanlinessQuietnessHospitalEnvDimScore string,
+	DischargeInfoAchPts string,
+	DischargeInfoImpPts string,
+	DischargeInfoDimScore string,
+	OverallRatingHospitalAchPts string,
+	OverallRatingHospitalImpPts string,
+	OverallRatingHospitalDimScore string,
+	HCAHPSBaseScore string,
+	HCAHPSConsistencyScore string
 )
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
 with SERDEPROPERTIES (
@@ -62,45 +68,18 @@ with SERDEPROPERTIES (
  "escapeChar" = '\\'
 )
 STORED AS TEXTFILE
-LOCATION "/user/w205/hospital_compare";
+LOCATION "/user/w205/hospital_compare/surveyresult";
 
 
 
-
-
-DROP TABLE Procedure;
-CREATE EXTERNAL TABLE Procedure(
-ProviderID	int,
-Condition string,
-Measure_ID string,
-MeasureName string,
-Score int,
-Sample int,
-Footnote string,
-MeasureStartDate date,
-MeasureEndDate date
-)
-ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
-with SERDEPROPERTIES (
- "separatorChar" = "," ,
- "quoteChar" = '"',
- "escapeChar" = '\\'
-)
-STORED AS TEXTFILE
-LOCATION "/user/w205/hospital_compare";
-
-
-
-
-
-DROP TABLE Measure;
-CREATE EXTERNAL TABLE Measure(
-Measure_ID int,
-MeasureName string,
-MeasureStartQuarter string,
-MeasureStartDate date,
-MeasureEndQuarter string,
-MeasureEndDate date
+DROP TABLE measure;
+CREATE EXTERNAL TABLE measure(
+	MeasureName string,
+	Measure_ID string,
+	MeasureStartQuarter string,
+	MeasureStartDate string,
+	MeasureEndQuarter string,
+	MeasureEndDate string
 )
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
 with SERDEPROPERTIES (
@@ -109,6 +88,71 @@ with SERDEPROPERTIES (
  "escapeChar" = '\\'
 )
 STORED AS TEXTFILE
-LOCATION "/user/w205/hospital_compare";
+LOCATION "/user/w205/hospital_compare/measure";
+
+
+
+
+DROP TABLE readmission;
+CREATE EXTERNAL TABLE readmission(
+	ProviderID string,
+	HospitalName string,	
+	Address string,
+	City string,	
+	State string,	
+	ZIPCode string,	
+	CountyName string,	
+	PhoneNumber string,	
+	MeasureName	 string,
+	MeasureID	 string,
+	ComparedtoNational string,	
+	DenominatorScore	 string,
+	LowerEstimate	 string,
+	HigherEstimate	 string,
+	Footnote	 string,
+	MeasureStartDate string,	
+	MeasureEndDate string
+)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+with SERDEPROPERTIES (
+ "separatorChar" = ",",
+ "quoteChar" = '"',
+ "escapeChar" = '\\'
+)
+STORED AS TEXTFILE
+LOCATION "/user/w205/hospital_compare/readmission";
+
+
+
+DROP TABLE timelyEffective;
+CREATE EXTERNAL TABLE timelyEffective(
+	ProviderID string,
+	HospitalName string,	
+	Address string,	
+	City string,	
+	State string,	
+	ZIPCode string,
+	CountyName string,	
+	PhoneNumber string,	
+	Condition string,	
+	MeasureID string,	
+	MeasureName string,	
+	Score string,	
+	Sample string,	
+	Footnote string,	
+	MeasureStartDate string,	
+	MeasureEndDate string
+)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+with SERDEPROPERTIES (
+ "separatorChar" = ",",
+ "quoteChar" = '"',
+ "escapeChar" = '\\'
+)
+STORED AS TEXTFILE
+LOCATION "/user/w205/hospital_compare/timelyEffective";
+
+
+
 
 
