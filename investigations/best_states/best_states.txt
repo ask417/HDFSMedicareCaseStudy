@@ -1,0 +1,13 @@
+There were numerous metrics available for rating the quality of healthcare by state, such as time taken to treatments, efficacy ratings, and relative rankings of procedures to other hospitals.  Because all of these metrics have different scales, we cannot just combine averages or sums on each field.  Doing so would result in a ranking where minutes until treatment would be conflated with something like death rate of number of hospitals that perform worse on a given procedure.  To normalize all of these fields, I ranked each column such that a score of 1 corresponded to the best performing state for that metric.  As I have no industry experience, i've made the assumption that all fields should be given equal weight, and I've ranked the states by their mean rank.  The top ten states are listed below in order by jointrank.
+
+state	rankhospbetter	rankhospworst	ranktimetaken	rankrateefficacy	jointrank
+IL		3				4				25				30					15.5
+KS		26				27				44				5					15.5
+IN		10				16				15				23					16.0
+IA		22				28				7				7					16.0
+MI		5				5				30				28					17.0
+KY		24				5				22				17					17.0
+WI		15				28				5				21					17.25
+OK		25				26				9				9					17.25
+MS		44				18				8				4					18.5
+LA		26				18				27				6					19.25

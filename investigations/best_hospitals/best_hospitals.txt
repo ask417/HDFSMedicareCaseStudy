@@ -1,0 +1,30 @@
+The hospitals which provided the highest level of care for a wide variety of procedures are listed below, ordered by the total sum of all their procedure ratings.  If we were to only rank based on highest mean rating, this would yield the second table below, which is comprised largely of specialty hospitals.  These hospitals have higher care levels at a subset of procedures, but based on their total scores it's apparent that they offer on the order of 1/3 the number of procedures we see for the hospitals in the first table.  As such, the totalscore field is a more accurate combination of both high rating and breadth of procedures.
+
+Hospitals Ranked by totalscore:
+
+a.providerid	totalscore	totalmeanscore	totalvariance	a.hospitalname
+340113	3810.8	86.28	444.46	CAROLINAS MEDICAL CENTER/BEHAV HEALTH
+340001	3806.6	87.19	396.89	CAROLINAS MEDICAL CENTER-NORTHEAST
+010039	3803.8	86.53	412.96	HUNTSVILLE HOSPITAL
+450388	3780.7	86.07	512.1	METHODIST HOSPITAL
+440049	3755.6	86.81	378.82	METHODIST HEALTHCARE MEMPHIS HOSPITALS
+490063	3755.3	85.79	464.86	INOVA FAIRFAX HOSPITAL
+340115	3752.5	87.07	439.84	FIRSTHEALTH MOORE REGIONAL HOSPITAL
+330101	3733.5	88.01	366.51	NEW YORK-PRESBYTERIAN HOSPITAL
+510070	3724.0	83.71	445.57	RALEIGH GENERAL HOSPITAL
+340053	3720.5	87.66	397.45	NOVANT HEALTH PRESBYTERIAN MEDICAL CENTER
+
+Hospitals Ranked by totalmeanscore:
+
+a.providerid	totalscore	totalmeanscore	totalvariance	a.hospitalname
+190268	976.8	96.2	15.78	LAFAYETTE GENERAL SURGICAL HOSPITAL
+050769	1203.0	96.04	12.3	HOAG ORTHOPEDIC INSTITUTE
+170183	1114.5	95.78	11.93	KANSAS SURGERY & RECOVERY CENTER
+450875	1213.1	95.56	10.01	QUAIL CREEK SURGICAL HOSPITAL
+280127	1206.3	95.51	12.17	LINCOLN SURGICAL HOSPITAL
+420102	1216.1	95.39	14.38	GHS PATEWOOD MEMORIAL HOSPITAL
+460049	1209.3	95.34	11.13	THE ORTHOPEDIC SPECIALTY HOSPITAL
+360266	1197.7	95.33	12.49	MOUNT CARMEL NEW ALBANY SURGICAL HOSPITAL
+340049	1214.0	95.33	10.32	NORTH CAROLINA SPECIALTY HOSPITAL
+030107	1117.5	95.03	12.42	ARIZONA SPINE AND JOINT HOSPITAL
+
