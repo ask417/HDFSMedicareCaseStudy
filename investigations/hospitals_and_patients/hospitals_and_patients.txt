@@ -1,0 +1,5 @@
+To evaluate whether average scores for hospital quality or procedural variability were correlated with survey responses, I first joined my procedure data with my response data on providerID and hospital name.  Intuitively it would make little sense to try and correlate standalone procedural variability with patient survey respones, as they're all tethered to specific hospitals.  As such, the quality scores and variability scores are per hospital/providerID.  To do the actual correlation, i just used the pearson correlation function "corr()" built into hive.  Rather than perform correlations on every combo of survey response and quality measure, i just did the combination of correlations for average procedural quality rate and procedural variance per hospital with the overall survey measures on achievement, improvement and dimension.  The results below indicate that hospital quality is medium-weakly positively correlated with survey scores, while procedural variability is weakly negatively correlated with survey scores.
+
+
+avgachcorr	avgimpcorr	avgdimcorr	varachcorr	varimpcorr	vardimcorr
+0.235		0.113		0.218		-0.153		-0.101		-0.157
