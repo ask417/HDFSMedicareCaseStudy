@@ -106,8 +106,7 @@ CREATE EXTERNAL TABLE readmission(
 	MeasureName	 string,
 	MeasureID	 string,
 	ComparedtoNational string,	
-	Denominator string,
-	Score	 string,
+	DenominatorScore	 string,
 	LowerEstimate	 string,
 	HigherEstimate	 string,
 	Footnote	 string,
@@ -154,6 +153,49 @@ STORED AS TEXTFILE
 LOCATION "/user/w205/hospital_compare/timelyEffective";
 
 
+
+DROP TABLE readmissionState;
+CREATE EXTERNAL TABLE readmissionState(
+	State string,
+	MeasureName string,
+	MeasureID string,
+	HospitalsWorse string,
+	HospitalsSame string,
+	HospitalsBetter string,
+	HospitalsTooFew string,
+	Footnote string,
+	MeasureStartDate string,
+	MeasureEndDate string
+)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+with SERDEPROPERTIES (
+ "separatorChar" = ",",
+ "quoteChar" = '"',
+ "escapeChar" = '\\'
+)
+STORED AS TEXTFILE
+LOCATION "/user/w205/hospital_compare/readmissionState";
+
+
+DROP TABLE timelyEffectiveState;
+CREATE EXTERNAL TABLE timelyEffectiveState(
+	state string,
+	Condition string,	
+	MeasureName string,	
+	MeasureID string,	
+	Score string,	
+	Footnote string,	
+	MeasureStartDate string,	
+	MeasureEndDate string
+)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+with SERDEPROPERTIES (
+ "separatorChar" = ",",
+ "quoteChar" = '"',
+ "escapeChar" = '\\'
+)
+STORED AS TEXTFILE
+LOCATION "/user/w205/hospital_compare/timelyEffectiveState";
 
 
 
